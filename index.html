@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav Prasad Padala - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            padding: 60px 0;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .nav-tab {
+            padding: 20px 30px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-tab.active {
+            background: white;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            color: #555;
+        }
+
+        .education-item {
+            background: white;
+            border-left: 4px solid #667eea;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .education-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .education-school {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .education-year {
+            color: #666;
+            font-style: italic;
+        }
+
+        .gpa {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .skill-category h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .skill-item {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .activities-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .certification-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cert-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .cert-provider {
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Abhinav Prasad Padala</h1>
+            <p class="subtitle">MSc in Computer Science | Aspiring Software Engineer | Data Analytics & AI Enthusiast</p>
+            <div class="contact-info">
+                <div class="contact-item" onclick="openPhone()" style="cursor: pointer;">
+                    <span>📞</span> +91 9701349480
+                </div>
+                <div class="contact-item" onclick="openEmail()" style="cursor: pointer;">
+                    <span>📧</span> padalaabhinav90@gmail.com
+                </div>
+                <div class="contact-item" onclick="window.open('https://www.linkedin.com/in/abhinav-prasad-padala-b67a552b4/', '_blank')" style="cursor: pointer;">
+                    <span>💼</span> LinkedIn Profile
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showTab('about')">About</button>
+                <button class="nav-tab" onclick="showTab('education')">Education</button>
+                <button class="nav-tab" onclick="showTab('projects')">Projects</button>
+                <button class="nav-tab" onclick="showTab('skills')">Skills</button>
+                <button class="nav-tab" onclick="showTab('activities')">Activities</button>
+            </div>
+
+            <div id="about" class="tab-content active">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <p class="about-text">
+                        I am a dedicated and passionate individual with an MSc in Computer Science, eager to enhance my knowledge and skills in a challenging environment. With a solid academic background and a proven record in sports and extracurricular activities, I thrive in collaborative settings and am committed to personal and organizational growth.
+                        <br><br>
+                        <strong>Career Interests:</strong> I am particularly interested in Software Engineering roles, Data Analytics positions, and exploring opportunities in Artificial Intelligence. My goal is to leverage my technical skills and analytical mindset to contribute to innovative projects that make a meaningful impact.
+                    </p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>🎯 Core Strengths</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Leadership</span>
+                            <span class="skill-item">Team Player</span>
+                            <span class="skill-item">Adaptable</span>
+                            <span class="skill-item">Communication</span>
+                            <span class="skill-item">Time Management</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>🏆 Certifications</h3>
+                        <div class="certification-card">
+                            <div class="cert-title">Python (Basic)</div>
+                            <div class="cert-provider">HackerRank</div>
+                        </div>
+                        <div class="certification-card">
+                            <div class="cert-title">SQL (Basic)</div>
+                            <div class="cert-provider">HackerRank</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="education" class="tab-content">
+                <h2 class="section-title">Educational Journey</h2>
+                
+                <div class="education-item">
+                    <div class="education-title">Master of Science in Computer Science</div>
+                    <div class="education-school">MATS University</div>
+                    <div class="education-year">2022 - 2024</div>
+                    <span class="gpa">GPA: 6.46/10</span>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Bachelor of Science in Computer Science</div>
+                    <div class="education-school">MATS University</div>
+                    <div class="education-year">2019 - 2022</div>
+                    <span class="gpa">GPA: 7.29/10</span>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Class XII</div>
+                    <div class="education-school">Sri Chaitanya Junior College</div>
+                    <div class="education-year">2016 - 2018</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Class X, SSC</div>
+                    <div class="education-school">Tapovan High School</div>
+                    <div class="education-year">2015 - 2016</div>
+                </div>
+            </div>
+
+            <div id="projects" class="tab-content">
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <div class="project-card">
+                    <h3 class="project-title">🚀 Initial Business Success Rate Prediction</h3>
+                    <p class="project-description">
+                        Developed a comprehensive application to forecast business sales and provide a platform for entrepreneurs to develop their business. The system displays vital information for start-up owners to increase their business sales, offering a fast, reliable, and efficient solution for business growth prediction.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Data Analytics</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">🔐 Random Password Generator</h3>
+                    <p class="project-description">
+                        Created a sophisticated password generator tool that creates secure and complex passwords to enhance user data security. The project leverages advanced algorithms to ensure randomness and adherence to best practices for password strength, including optimal length, character diversity, and unpredictability.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Security</span>
+                        <span class="tech-tag">Cryptography</span>
+                        <span class="tech-tag">Algorithm Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="skills" class="tab-content">
+                <h2 class="section-title">Technical Expertise</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>💻 Programming Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">HTML5</span>
+                            <span class="skill-item">CSS3</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🗄️ Databases</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">MySQL</span>
+                            <span class="skill-item">SQL</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🛠️ Tools & Platforms</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">MS Excel</span>
+                            <span class="skill-item">Windows</span>
+                            <span class="skill-item">macOS</span>
+                            <span class="skill-item">Django</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🤝 Soft Skills</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Leadership</span>
+                            <span class="skill-item">Team Collaboration</span>
+                            <span class="skill-item">Communication</span>
+                            <span class="skill-item">Adaptability</span>
+                            <span class="skill-item">Time Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="activities" class="tab-content">
+                <h2 class="section-title">Activities & Leadership</h2>
+                
+                <ul class="activities-list">
+                    <li class="activity-item">
+                        <strong>📱 Application Development Team Lead</strong><br>
+                        Led the application development team during my MSc program, coordinating project deliverables and mentoring team members.
+                    </li>
+                    
+                    <li class="activity-item">
+                        <strong>🏆 Debate Competition Finalist</strong><br>
+                        Participated and reached the finals in an on-spot debate competition, demonstrating strong communication and critical thinking skills.
+                    </li>
+                    
+                    <li class="activity-item">
+                        <strong>💬 Discussion Forum Leader</strong><br>
+                        Served as the primary lead in university discussion forums focused on improving communication and fostering collaborative learning environments.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Add smooth scrolling and interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Email function
+            window.openEmail = function() {
+                try {
+                    window.open('mailto:padalaabhinav90@gmail.com', '_self');
+                } catch (e) {
+                    // Fallback: try different method
+                    window.location = 'mailto:padalaabhinav90@gmail.com';
+                }
+            };
+            
+            // Phone function
+            window.openPhone = function() {
+                try {
+                    window.open('tel:+919701349480', '_self');
+                } catch (e) {
+                    // Fallback: try different method
+                    window.location = 'tel:+919701349480';
+                }
+            };
+            
+            // Animate skill items on hover
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Add click effect to project cards
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-10px)';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
